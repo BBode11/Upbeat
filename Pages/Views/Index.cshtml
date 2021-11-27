@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{SearchString?}"
 @model Upbeat.Pages.Views.IndexModel
 
 @{
@@ -7,7 +7,9 @@
 
 <style>
     body {
-        background-color: white;
+        background: #abbaab; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #ffffff, #abbaab); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
     a:hover {
@@ -23,25 +25,40 @@
     }
 </style>
 
-<h1 class="text-center">Upbeat Song Tracker</h1>
+<h1 class="text-justify pl-5">Upbeat Song Tracker</h1>
 
-<p>
-    <a asp-page="Create">Add New Song</a>
-</p>
-<table class="pure-table pure-table-bordered pure-table-striped">
+<div class="pure-g">
+    <div class="pure-u-1-2"><a class="" asp-page="Create">Add New Song</a></div>
+    <div class="pure-u-1-2">
+        <form class="pure-form">
+            Title: <input class="pure-input-rounded mb-1" type="text" asp-for="SearchString" />
+            <input class="btn btn-outline-secondary btn-sm p-1 mb-1 pr-2 " type="submit" value="Filter" />
+            <a class="btn btn-outline-primary btn-sm p-1 mb-1 pr-2" asp-page="./Index">Refresh</a>
+        </form>
+    </div>
+</div>
+<table class="pure-table pure-table-bordered pure-table-striped table-custom shadow">
     <thead>
         <tr class="pure-table-odd">
             <th>
-                @Html.DisplayNameFor(model => model.Songs[0].Title)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+                    @Html.DisplayNameFor(model => model.Songs[0].Title)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Songs[0].Artist)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ArtistSort">
+                    @Html.DisplayNameFor(model => model.Songs[0].Artist)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Songs[0].Genre)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.GenreSort">
+                    @Html.DisplayNameFor(model => model.Songs[0].Genre)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Songs[0].ReleaseDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Songs[0].ReleaseDate)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Songs[0].DurationTime)
@@ -50,29 +67,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Songs) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Artist)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DurationTime)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Songs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DurationTime)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

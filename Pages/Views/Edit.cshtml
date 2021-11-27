@@ -5,50 +5,68 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    a:hover {
+        color: darkred;
+    }
 
-<h4>Songs</h4>
+    h1, h4{
+        color: #F03939;
+    }
+
+    th {
+        color: #F03939;
+    }
+
+    .row {
+        display: flex;
+       justify-content: center;
+    }
+</style>
+
+<h1 class="text-center">Edit Current Song Information</h1>
+
+<h4 class="text-center">@Model.Songs.Title by: @Model.Songs.Artist</h4>
 <hr />
-<div class="row">
+<div class="row text-center align-content-center">
     <div class="col-md-4">
-        <form method="post">
+        <form class="pure-form pure-form-aligned" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Songs.ID" />
             <div class="form-group">
                 <label asp-for="Songs.Title" class="control-label"></label>
-                <input asp-for="Songs.Title" class="form-control" />
+                <input asp-for="Songs.Title" class="form-control pure-input-rounded" />
                 <span asp-validation-for="Songs.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Songs.Artist" class="control-label"></label>
-                <input asp-for="Songs.Artist" class="form-control" />
+                <input asp-for="Songs.Artist" class="form-control pure-input-rounded" />
                 <span asp-validation-for="Songs.Artist" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Songs.Genre" class="control-label"></label>
-                <input asp-for="Songs.Genre" class="form-control" />
+                <input asp-for="Songs.Genre" class="form-control pure-input-rounded" />
                 <span asp-validation-for="Songs.Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Songs.ReleaseDate" class="control-label"></label>
-                <input asp-for="Songs.ReleaseDate" class="form-control" />
+                <input asp-for="Songs.ReleaseDate" class="form-control pure-input-rounded" />
                 <span asp-validation-for="Songs.ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Songs.DurationTime" class="control-label"></label>
-                <input asp-for="Songs.DurationTime" class="form-control" />
+                <input asp-for="Songs.DurationTime" class="form-control pure-input-rounded" />
                 <span asp-validation-for="Songs.DurationTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class=" pure-button pure-button-save" />
+                <a class="pure-button pure-button-back"asp-page="./Index">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

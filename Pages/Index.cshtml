@@ -4,7 +4,22 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        background: #333333; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #dd1818, #333333); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #333333, #dd1818); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+</style>
+
+<div class="container text-center">
+    <div class="jumbotron shadow-lg">
+        <h1 class="display-4">Welcome to Upbeat Music!</h1>
+        <p class="lead">Upbeat music is an application to track and save your favorite music.</p>
+        <hr class="my-4">
+        <p>To get started tracking your favorite music click the button below!</p>
+        <p class="lead">
+            <a class="btn btn-outline-primary btn-lg " asp-area="" asp-page="/Views/Index" role="button">Get Started</a>
+        </p>
+    </div>
 </div>

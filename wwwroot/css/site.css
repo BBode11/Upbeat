@@ -61,7 +61,10 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-color: #450303;
+    background: #abbaab; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #ffffff, #abbaab); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background-color: #450303;*/
 }
 .footer {
   position: absolute;
@@ -83,3 +86,26 @@ a:hover {
 .pure-menu {
     background-color: #F03939;
 }
+
+.pure-button-save {
+    color: #FAF9F6;
+    background-color: #50C878;
+    font-size: 130%;
+    padding-right: 4em;
+    text-align: center;
+}
+
+.pure-button-back {
+    color: #FAF9F6;
+    background-color: #FFA524;
+    font-size: 130%;
+}
+
+    .pure-button-back:hover {
+        color: #FAF9F6;
+    }
+
+h1, h3, h4 {
+    color: #F03939;
+}
+
